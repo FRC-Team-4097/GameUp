@@ -46,7 +46,7 @@ public class driveForward extends Command {
     	count+=1;
     	SmartDashboard.putNumber("Time", count);
     	if(count<=650){
-    		Robot.driveTrain.altDrive(0.8, 0);
+    		Robot.driveTrain.altdrive(0.8, 0.0);
     	}
     	else{
     		end();

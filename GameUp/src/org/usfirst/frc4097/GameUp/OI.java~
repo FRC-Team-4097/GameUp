@@ -67,9 +67,6 @@ public class OI {
 
         // SmartDashboard Buttons
         SmartDashboard.putData("doNothing", new doNothing());
-        //SmartDashboard.putData("joyDrive", new joyDrive());
-        //SmartDashboard.putData("boxChange", new boxChange());
-       // SmartDashboard.putData("elevatorControl", new elevatorControl());
         SmartDashboard.putData("toSwitchCenter", new toSwitchCenter());
         SmartDashboard.putData("driveForward", new driveForward());
         SmartDashboard.putData("toSwitchLeft", new toSwitchLeft());
