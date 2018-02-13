@@ -46,14 +46,14 @@ public class boxTransfer extends Subsystem {
     		shoot();
     	}
     	else{
-    		stop();
+    		shootMotor.set(-0.05);
     	}
     }
     public void shoot(){
-    	shootMotor.set(1);
+    	shootMotor.set(0.1);
     }
     public void suck(){
-    	shootMotor.set(-1);
+    	shootMotor.set(-0.1);
     }
     public void stop(){
     	shootMotor.stopMotor();

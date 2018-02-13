@@ -62,10 +62,10 @@ public class Robot extends TimedRobot {
         // constructed yet. Thus, their requires() statements may grab null
         // pointers. Bad news. Don't move it.
         
-        UsbCamera camera =new UsbCamera("cam0", 0);
-        camera.setResolution(640, 480);
-        camera.setFPS(30);
-        CameraServer.getInstance().startAutomaticCapture(camera);
+        //UsbCamera camera =new UsbCamera("cam0", 0);
+        //camera.setResolution(640, 480);
+        //camera.setFPS(30);
+        CameraServer.getInstance().startAutomaticCapture();//camera);
         oi = new OI();
 
         // Add commands to Autonomous Sendable Chooser

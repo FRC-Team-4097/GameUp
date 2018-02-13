@@ -74,6 +74,7 @@ public class Elevator extends Subsystem {
     	}
     	else{
     		stop();
+    		
     	}
     }
     public void stop(){
