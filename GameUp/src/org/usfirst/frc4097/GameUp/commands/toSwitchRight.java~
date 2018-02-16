@@ -10,6 +10,7 @@
 
 
 package org.usfirst.frc4097.GameUp.commands;
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc4097.GameUp.Robot;
 
@@ -40,6 +41,23 @@ public class toSwitchRight extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	String gameData;
+    	gameData=DriverStation.getInstance().getGameSpecificMessage();
+    	if(gameData.length() > 0)
+        {
+    		if(gameData.charAt(1) == 'R'){
+    			//scale code
+    		} 
+    		else if (gameData.charAt(0)=='R'){
+    			//switch code	
+    		}
+    		else {
+    			new driveForward();
+    		}
+        }
+    	else{
+    		new driveForward();
+    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -49,6 +67,9 @@ public class toSwitchRight extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
+    	Robot.driveTrain.stop();
+    	Robot.elevator.stop();
+    	Robot.boxTransfer.stop();
     }
 
     // Called when another command which requires one or more of the same

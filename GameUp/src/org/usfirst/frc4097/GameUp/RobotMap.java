@@ -35,7 +35,8 @@ public class RobotMap {
     public static SpeedController elevatorlinearMotor;
     public static DigitalInput elevatorscaleSwitch;
     public static DigitalInput elevatorfloorSwitch;
-    public static SpeedController boxTransfershootMotor;
+    public static SpeedController boxTransfershootMotorRight;
+    public static SpeedController boxTransfershootMotorLeft;
     public static Relay lightSystemr;
     public static Relay lightSystemg;
     public static Relay lightSystemb;
@@ -65,9 +66,12 @@ public class RobotMap {
         elevatorfloorSwitch = new DigitalInput(3);
         LiveWindow.addSensor("Elevator", "floorSwitch", elevatorfloorSwitch);
         
-        boxTransfershootMotor = new VictorSP(4);
-        LiveWindow.addActuator("boxTransfer", "shootMotor", (VictorSP) boxTransfershootMotor);
-        boxTransfershootMotor.setInverted(false);
+        boxTransfershootMotorRight = new VictorSP(5);
+        LiveWindow.addActuator("boxTransfer", "shootMotorRight", (VictorSP) boxTransfershootMotorRight);
+        boxTransfershootMotorRight.setInverted(false);
+        boxTransfershootMotorLeft = new VictorSP(4);
+        LiveWindow.addActuator("boxTransfer", "shootMotorLeft", (VictorSP) boxTransfershootMotorLeft);
+        boxTransfershootMotorLeft.setInverted(false);
         lightSystemr = new Relay(0);
         LiveWindow.addActuator("lightSystem", "r", lightSystemr);
         
