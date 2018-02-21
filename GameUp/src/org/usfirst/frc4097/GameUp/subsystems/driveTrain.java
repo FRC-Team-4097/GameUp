@@ -42,8 +42,8 @@ public class driveTrain extends Subsystem {
     	differentialDrive.arcadeDrive(d, turn);
     }
     public void takeJoystick(Joystick main){
-    	//differentialDrive.arcadeDrive(main.getX()*main.getThrottle()*-1, main.getY());
-    	differentialDrive.arcadeDrive(main.getX(), main.getY());
+    	double f= main.getRawAxis(3);
+    	differentialDrive.arcadeDrive(main.getX()*(1-0.5*f), main.getY()*(1-0.5*f));
     }
     public void stop(){
     	differentialDrive.tankDrive(0, 0);

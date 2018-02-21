@@ -40,7 +40,7 @@ public class boxTransfer extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
     public void joystickInput(Joystick main){
-    	int count=0;
+    	
     	if (main.getRawButton(2)){
     		shootMotorRight.set(0.5);
     		shootMotorLeft.set(0.5);
@@ -49,20 +49,17 @@ public class boxTransfer extends Subsystem {
     		shootMotorRight.set(-0.5);
     		shootMotorLeft.set(-0.5);
     	}
+    	else if (main.getRawButton(6)){
+    		shootMotorRight.set(-0.5);
+    		shootMotorLeft.set(0.5);
+    	}
+    	else if (main.getRawButton(5)){
+    		shootMotorRight.set(0.5);
+    		shootMotorLeft.set(-0.5);
+    	}
     	else{
-    		count+=1;
     		shootMotorRight.stopMotor();
         	shootMotorLeft.stopMotor();
-    		if (count%100==0){
-    			while(count!=0){	
-    				shootMotorRight.set(1);
-    				shootMotorLeft.set(1);
-    			}
-    		}
-    		else if (count%13==0){
-    			shootMotorRight.stopMotor();
-    	    	shootMotorLeft.stopMotor();
-    		}
     	}
     }
     
