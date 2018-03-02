@@ -60,6 +60,9 @@ public class Elevator extends Subsystem {
     		if (floorSwitch.get()==false){
     			stop();
     		}
+    		//else if (main.getRawButton(8)){
+    			//linearMotor.set(-0.5);
+    		//}
     		else{
     			linearMotor.set(-1);
     		}

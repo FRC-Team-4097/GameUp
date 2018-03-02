@@ -42,12 +42,12 @@ public class boxTransfer extends Subsystem {
     public void joystickInput(Joystick main){
     	
     	if (main.getRawButton(2)){
-    		shootMotorRight.set(0.5);
-    		shootMotorLeft.set(0.5);
+    		shootMotorRight.set(1);
+    		shootMotorLeft.set(1);
     	}
     	else if (main.getRawButton(4)){
-    		shootMotorRight.set(-0.5);
-    		shootMotorLeft.set(-0.5);
+    		shootMotorRight.set(-1);
+    		shootMotorLeft.set(-1);
     	}
     	else if (main.getRawButton(6)){
     		shootMotorRight.set(-0.5);
