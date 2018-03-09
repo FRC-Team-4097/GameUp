@@ -65,17 +65,19 @@ public class toSwitchRight extends Command {
     	    	}
     	    	else{
     	    		if (RobotMap.elevatorscaleSwitch.get()==true){
-    	    			Robot.elevator.linearMotor.set(0.5);
+    	    			RobotMap.elevatorlinearMotor.set(0.5);
     	    		}
     	    		else{
-    	    			Robot.elevator.linearMotor.set(0);
+    	    			RobotMap.elevatorlinearMotor.set(0);
     	    		}
     	    		Robot.driveTrain.stop();
     	    		while (count<800){
-    	    			Robot.boxTransfer.shootMotorLeft.set(0.5);
-    	    			Robot.boxTransfer.shootMotorRight.set(0.5);
-    	    			end();
+    	    			RobotMap.boxTransfershootMotorLeft.set(0.5);
+    	    			RobotMap.boxTransfershootMotorRight.set(0.5);
     	    		}
+    	    		Robot.driveTrain.stop();
+    	        	Robot.elevator.stop();
+    	        	Robot.boxTransfer.stop();
     	    	}
     		} 
     		else if (gameData.charAt(0)=='R'){
@@ -95,17 +97,19 @@ public class toSwitchRight extends Command {
     	    	}
     	    	else{
     	    		if (RobotMap.elevatorscaleSwitch.get()==true){
-    	    			Robot.elevator.linearMotor.set(0.5);
+    	    			RobotMap.elevatorlinearMotor.set(0.5);
     	    		}
     	    		else{
-    	    			Robot.elevator.linearMotor.set(0);
+    	    			RobotMap.elevatorlinearMotor.set(0);
     	    		}
     	    		Robot.driveTrain.stop();
     	    		while (count<475){
-    	    			Robot.boxTransfer.shootMotorLeft.set(0.5);
-    	    			Robot.boxTransfer.shootMotorRight.set(0.5);
+    	    			RobotMap.boxTransfershootMotorLeft.set(0.5);
+    	    			RobotMap.boxTransfershootMotorRight.set(0.5);
     	    		}
-    	    		end();
+    	    		Robot.driveTrain.stop();
+    	        	Robot.elevator.stop();
+    	        	Robot.boxTransfer.stop();
     	    	}	
     		}
     		else {
@@ -127,6 +131,7 @@ public class toSwitchRight extends Command {
     	Robot.driveTrain.stop();
     	Robot.elevator.stop();
     	Robot.boxTransfer.stop();
+    	count=0;
     }
 
     // Called when another command which requires one or more of the same

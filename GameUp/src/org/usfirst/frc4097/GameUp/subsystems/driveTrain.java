@@ -44,6 +44,9 @@ public class driveTrain extends Subsystem {
     public void takeJoystick(Joystick main){
     	double f= main.getRawAxis(3);
     	differentialDrive.arcadeDrive(main.getX()*(0.75-0.25*f), main.getY()*(0.75-0.25*f));
+    	if (RobotMap.elevatorscaleSwitch.get()==false){
+    		RobotMap.elevatorlinearMotor.set(0.0);
+    	}
     }
     public void stop(){
     	differentialDrive.tankDrive(0, 0);
