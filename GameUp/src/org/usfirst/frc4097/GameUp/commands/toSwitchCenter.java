@@ -15,6 +15,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc4097.GameUp.Robot;
+import org.usfirst.frc4097.GameUp.RobotMap;
 
 /**
  *
@@ -51,17 +52,27 @@ public class toSwitchCenter extends Command {
     		if(gameData.charAt(0) == 'L'){
     			count+=1;
     	    	SmartDashboard.putNumber("Time", count);
-    	    	if(count<=650){
+    	    	if(count<=325){
     	    		Robot.driveTrain.altdrive(0.8, 0.0);
+    	    		//Robot.elevator.linearMotor.set(0.1);
     	    	}
-    	    	else if(count<=750){
-    	    		Robot.driveTrain.altdrive(0, -1);
-    	    		Robot.elevator.linearMotor.set(1);
+    	    	else if(count<=425){
+    	    		Robot.driveTrain.altdrive(0.1, -1);
+    	    		//Robot.elevator.linearMotor.set(1);
+    	    	}
+    	    	else if(count<=425){
+    	    		Robot.driveTrain.altdrive(0.1, -1);
+    	    		//Robot.elevator.linearMotor.set(0);
     	    	}
     	    	else{
-    	    		Robot.elevator.linearMotor.set(0);
+    	    		if (RobotMap.elevatorscaleSwitch.get()==true){
+    	    			Robot.elevator.linearMotor.set(0.5);
+    	    		}
+    	    		else{
+    	    			Robot.elevator.linearMotor.set(0);
+    	    		}
     	    		Robot.driveTrain.stop();
-    	    		while (count<800){
+    	    		while (count<475){
     	    			Robot.boxTransfer.shootMotorLeft.set(0.5);
     	    			Robot.boxTransfer.shootMotorRight.set(0.5);
     	    		}
@@ -73,15 +84,25 @@ public class toSwitchCenter extends Command {
     	    	SmartDashboard.putNumber("Time", count);
     	    	if(count<=325){
     	    		Robot.driveTrain.altdrive(0.8, 0.0);
+    	    		//Robot.elevator.linearMotor.set(0.1);
     	    	}
-    	    	else if(count<=375){
-    	    		Robot.driveTrain.altdrive(0, 1);
-    	    		Robot.elevator.linearMotor.set(1);
+    	    	else if(count<=425 && RobotMap.elevatorscaleSwitch.get()==true){
+    	    		Robot.driveTrain.altdrive(0.1, 1);
+    	    		//Robot.elevator.linearMotor.set(1);
+    	    	}
+    	    	else if(count<=425 && RobotMap.elevatorscaleSwitch.get()==false){
+    	    		Robot.driveTrain.altdrive(0.1, 11);
+    	    		//Robot.elevator.linearMotor.set(0);
     	    	}
     	    	else{
-    	    		Robot.elevator.linearMotor.set(0);
+    	    		if (RobotMap.elevatorscaleSwitch.get()==true){
+    	    			Robot.elevator.linearMotor.set(0.5);
+    	    		}
+    	    		else{
+    	    			Robot.elevator.linearMotor.set(0);
+    	    		}
     	    		Robot.driveTrain.stop();
-    	    		while (count<425){
+    	    		while (count<475){
     	    			Robot.boxTransfer.shootMotorLeft.set(0.5);
     	    			Robot.boxTransfer.shootMotorRight.set(0.5);
     	    		}

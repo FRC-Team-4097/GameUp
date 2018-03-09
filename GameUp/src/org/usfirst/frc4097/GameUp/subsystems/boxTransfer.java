@@ -49,12 +49,8 @@ public class boxTransfer extends Subsystem {
     		shootMotorRight.set(-1);
     		shootMotorLeft.set(-1);
     	}
-    	else if (main.getRawButton(6)){
-    		shootMotorRight.set(-0.5);
-    		shootMotorLeft.set(0.5);
-    	}
     	else if (main.getRawButton(5)){
-    		shootMotorRight.set(0.5);
+    		shootMotorRight.set(-0.5);
     		shootMotorLeft.set(-0.5);
     	}
     	else{

@@ -53,20 +53,26 @@ public class Elevator extends Subsystem {
     			stop();
     		}
     		else{
-    			linearMotor.set(1);
+    			linearMotor.set(-1);
     		}
     	}
+    	else if (main.getRawButton(6)){
+    		if (scaleSwitch.get()==false){
+    			stop();
+    		}
+    		else{
+    			linearMotor.set(-0.85);
+    		}
+		}
     	else if (main.getRawButton(1)){
     		if (floorSwitch.get()==false){
     			stop();
     		}
-    		//else if (main.getRawButton(8)){
-    			//linearMotor.set(-0.5);
-    		//}
     		else{
-    			linearMotor.set(-1);
+    			linearMotor.set(1);
     		}
     	}
+    	
     	else{
     		stop();
     		
