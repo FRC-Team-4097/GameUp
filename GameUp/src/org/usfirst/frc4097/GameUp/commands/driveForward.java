@@ -14,6 +14,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc4097.GameUp.Robot;
+import org.usfirst.frc4097.GameUp.RobotMap;
 
 /**
  *
@@ -45,11 +46,13 @@ public class driveForward extends Command {
     protected void execute() {
     	count+=1;
     	SmartDashboard.putNumber("Time", count);
-    	if(count<=650){
-    		Robot.driveTrain.altdrive(0.8, 0.0);
+    	if(count<=170){
+    		Robot.driveTrain.altdrive(0.0,-0.6);
+    		//RobotMap.driveTrainDifferentialDrive.arcadeDrive(0.0, -0.3);
     	}
     	else{
     		Robot.driveTrain.altdrive(0.0,0.0);
+    		//RobotMap.driveTrainDifferentialDrive.arcadeDrive(0.0, 0.0);
     	}
     }
 
@@ -63,6 +66,7 @@ public class driveForward extends Command {
     protected void end() {
     	count=0;
     	Robot.driveTrain.altdrive(0.0,0.0);
+    	RobotMap.driveTrainDifferentialDrive.arcadeDrive(0.0, 0.0);
     }
 
     // Called when another command which requires one or more of the same

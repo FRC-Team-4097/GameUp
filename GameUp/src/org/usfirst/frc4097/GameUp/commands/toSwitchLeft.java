@@ -49,51 +49,58 @@ public class toSwitchLeft extends Command {
     	gameData=DriverStation.getInstance().getGameSpecificMessage();
     	if(gameData.length() > 0)
         {
-    		if(gameData.charAt(1) == 'L'){
+    		if(gameData.charAt(0) == 'L'){
     			count+=1;
     	    	SmartDashboard.putNumber("Time", count);
-    	    	if(count<=650){
-    	    		Robot.driveTrain.altdrive(0.8, 0.0);
+    	    	if(count<=200){
+    	    		Robot.driveTrain.altdrive(0.0, -0.5);
     	    		//Robot.elevator.linearMotor.set(0.1);
+    	    		//previous value:310
     	    	}
-    	    	else if(count<=750 && RobotMap.elevatorscaleSwitch.get()==true){
-    	    		Robot.driveTrain.altdrive(0.1, 1);
+    	    	else if (Robot.gyro.getAngle()<=70){
+    	    		while (Robot.gyro.getAngle()<=70){
+    	    			RobotMap.driveTrainright.set(-0.5);
+    	    			RobotMap.driveTrainleft.set(0.5);
+    	    		}
+    	    	}
+    	    	else if(count<=450){
+    	    		Robot.driveTrain.stop();
+    	    		RobotMap.elevatorlinearMotor.set(-0.5);
+    	    	}
+    	    	else if (count<=500){
+    	    		RobotMap.elevatorlinearMotor.set(0);
+	        		RobotMap.boxTransfershootMotorLeft.set(0.5);
+	        		RobotMap.boxTransfershootMotorRight.set(0.5);
+    		}
+    	    		
+    	    	
+    	    	/*else if(count<=600 && RobotMap.elevatorscaleSwitch.get()==true){
+    	    		Robot.driveTrain.altdrive(0.1, 0);
     	    		//Robot.elevator.linearMotor.set(1);
     	    	}
-    	    	else if(count<=750 && RobotMap.elevatorscaleSwitch.get()==false){
-    	    		Robot.driveTrain.altdrive(0.1, 1);
+    	    	else if(count<=600 && RobotMap.elevatorscaleSwitch.get()==false){
+    	    		Robot.driveTrain.altdrive(0.1, 0);
     	    		//Robot.elevator.linearMotor.set(0);
-    	    	}
+    	    	}*/
     	    	else{
-    	    		if (RobotMap.elevatorscaleSwitch.get()==true){
-    	    			RobotMap.elevatorlinearMotor.set(0.5);
-    	    		}
-    	    		else{
-    	    			RobotMap.elevatorlinearMotor.set(0);
-    	    		}
-    	    		Robot.driveTrain.stop();
-    	    		while (count<800){
-    	    			RobotMap.boxTransfershootMotorLeft.set(0.5);
-    	    			RobotMap.boxTransfershootMotorRight.set(0.5);
-    	    		}
     	    		Robot.driveTrain.stop();
     	        	Robot.elevator.stop();
     	        	Robot.boxTransfer.stop();
     	    	}
     		} 
-    		else if (gameData.charAt(0)=='L'){
+    		/*else if (gameData.charAt(0)=='L'){
     			count+=1;
     	    	SmartDashboard.putNumber("Time", count);
-    	    	if(count<=325){
-    	    		Robot.driveTrain.altdrive(0.8, 0.0);
+    	    	if(count<=250){
+    	    		Robot.driveTrain.altdrive(0.0, -0.6);
     	    		//Robot.elevator.linearMotor.set(0.1);
     	    	}
-    	    	else if(count<=425 && RobotMap.elevatorscaleSwitch.get()==true){
-    	    		Robot.driveTrain.altdrive(0.1, 1);
+    	    	else if(count<=350 && RobotMap.elevatorscaleSwitch.get()==true){
+    	    		Robot.driveTrain.altdrive(0.1, 0);
     	    		//Robot.elevator.linearMotor.set(1);
     	    	}
-    	    	else if(count<=425 && RobotMap.elevatorscaleSwitch.get()==false){
-    	    		Robot.driveTrain.altdrive(0.1, 1);
+    	    	else if(count<=350 && RobotMap.elevatorscaleSwitch.get()==false){
+    	    		Robot.driveTrain.altdrive(0.1, 0);
     	    		//Robot.elevator.linearMotor.set(0);
     	    	}
     	    	else{
@@ -104,7 +111,7 @@ public class toSwitchLeft extends Command {
     	    			RobotMap.elevatorlinearMotor.set(0);
     	    		}
     	    		Robot.driveTrain.stop();
-    	    		while (count<475){
+    	    		while (count<400 && count>380){
     	    			RobotMap.boxTransfershootMotorLeft.set(0.5);
     	    			RobotMap.boxTransfershootMotorRight.set(0.5);
     	    		}
@@ -112,13 +119,25 @@ public class toSwitchLeft extends Command {
     	        	Robot.elevator.stop();
     	        	Robot.boxTransfer.stop();
     	    	}	
-    		}
+    		}*/
     		else {
-    			new driveForward();
+    			if(count<=310){
+    	    		Robot.driveTrain.altdrive(0.0, -0.5);
+    	    		//Robot.elevator.linearMotor.set(0.1);
+    	    	}
+    			else{
+    				Robot.driveTrain.stop();
+    			}
     		}
         }
     	else{
-    		new driveForward();
+    		if(count<=310){
+	    		Robot.driveTrain.altdrive(0.0, -0.5);
+	    		//Robot.elevator.linearMotor.set(0.1);
+	    	}
+			else{
+				Robot.driveTrain.stop();
+			}
     	}
     }
 

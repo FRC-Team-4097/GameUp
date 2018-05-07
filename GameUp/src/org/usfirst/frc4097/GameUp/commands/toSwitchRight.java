@@ -48,19 +48,39 @@ public class toSwitchRight extends Command {
     	gameData=DriverStation.getInstance().getGameSpecificMessage();
     	if(gameData.length() > 0)
         {
-    		if(gameData.charAt(1) == 'R'){
+    		if(gameData.charAt(0) == 'R'){
     			count+=1;
     	    	SmartDashboard.putNumber("Time", count);
-    	    	if(count<=650){
-    	    		Robot.driveTrain.altdrive(0.8, 0.0);
+    	    	if(count<=200){
+    	    		Robot.driveTrain.altdrive(0.0, -0.5);
+    	    		//Robot.elevator.linearMotor.set(0.1);
+    	    		//previous value:310
+    	    	}
+    	    	else if (Robot.gyro.getAngle()>=-70){
+    	    		while (Robot.gyro.getAngle()>=-70){
+    	    			RobotMap.driveTrainleft.set(-0.5);
+    	    			RobotMap.driveTrainright.set(0.5);
+    	    		}
+    	    	}
+    	    	else if(count<=450){
+    	    		Robot.driveTrain.stop();
+    	    		RobotMap.elevatorlinearMotor.set(-0.5);
+    	    	}
+    	    	else if (count<=500){
+    	    		RobotMap.elevatorlinearMotor.set(0);
+	        		RobotMap.boxTransfershootMotorLeft.set(0.5);
+	        		RobotMap.boxTransfershootMotorRight.set(0.5);
+    		}
+    	    	/*if(count<=500){
+    	    		Robot.driveTrain.altdrive(0.0, -0.6);
     	    		//Robot.elevator.linearMotor.set(0.1);
     	    	}
-    	    	else if(count<=750){
-    	    		Robot.driveTrain.altdrive(0.1, -1);
+    	    	else if(count<=600){
+    	    		Robot.driveTrain.altdrive(-0.1, 0);
     	    		//Robot.elevator.linearMotor.set(1);
     	    	}
-    	    	else if(count<=750){
-    	    		Robot.driveTrain.altdrive(0.1, -1);
+    	    	else if(count<=600){
+    	    		Robot.driveTrain.altdrive(-0.1, 0);
     	    		//Robot.elevator.linearMotor.set(0);
     	    	}
     	    	else{
@@ -71,7 +91,7 @@ public class toSwitchRight extends Command {
     	    			RobotMap.elevatorlinearMotor.set(0);
     	    		}
     	    		Robot.driveTrain.stop();
-    	    		while (count<800){
+    	    		while (count<650 && count>630){
     	    			RobotMap.boxTransfershootMotorLeft.set(0.5);
     	    			RobotMap.boxTransfershootMotorRight.set(0.5);
     	    		}
@@ -83,41 +103,42 @@ public class toSwitchRight extends Command {
     		else if (gameData.charAt(0)=='R'){
     			count+=1;
     	    	SmartDashboard.putNumber("Time", count);
-    	    	if(count<=325){
-    	    		Robot.driveTrain.altdrive(0.8, 0.0);
+    	    	if(count<=250){
+    	    		Robot.driveTrain.altdrive(0.0, -0.6);
     	    		//Robot.elevator.linearMotor.set(0.1);
     	    	}
-    	    	else if(count<=425){
-    	    		Robot.driveTrain.altdrive(0.1, -1);
+    	    	else if(count<=350){
+    	    		Robot.driveTrain.altdrive(-0.1, 0);
     	    		//Robot.elevator.linearMotor.set(1);
     	    	}
-    	    	else if(count<=425){
-    	    		Robot.driveTrain.altdrive(0.1, -1);
+    	    	else if(count<=350){
+    	    		Robot.driveTrain.altdrive(-0.1, 0);
     	    		//Robot.elevator.linearMotor.set(0);
-    	    	}
+    	    	}*/
     	    	else{
-    	    		if (RobotMap.elevatorscaleSwitch.get()==true){
-    	    			RobotMap.elevatorlinearMotor.set(0.5);
-    	    		}
-    	    		else{
-    	    			RobotMap.elevatorlinearMotor.set(0);
-    	    		}
-    	    		Robot.driveTrain.stop();
-    	    		while (count<475){
-    	    			RobotMap.boxTransfershootMotorLeft.set(0.5);
-    	    			RobotMap.boxTransfershootMotorRight.set(0.5);
-    	    		}
     	    		Robot.driveTrain.stop();
     	        	Robot.elevator.stop();
     	        	Robot.boxTransfer.stop();
     	    	}	
     		}
     		else {
-    			new driveForward();
+    			if(count<=200){
+    	    		Robot.driveTrain.altdrive(0.0, -0.5);
+    	    		//Robot.elevator.linearMotor.set(0.1);
+    	    	}
+    			else{
+    				Robot.driveTrain.stop();
+    			}
     		}
         }
     	else{
-    		new driveForward();
+    		if(count<=200){
+	    		Robot.driveTrain.altdrive(0.0, -0.5);
+	    		//Robot.elevator.linearMotor.set(0.1);
+	    	}
+			else{
+				Robot.driveTrain.stop();
+			}
     	}
     }
 

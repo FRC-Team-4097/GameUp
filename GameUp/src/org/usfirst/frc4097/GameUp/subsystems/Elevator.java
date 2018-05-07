@@ -61,7 +61,7 @@ public class Elevator extends Subsystem {
     			stop();
     		}
     		else{
-    			linearMotor.set(-0.85);
+    			linearMotor.set(-0.6);
     		}
 		}
     	else if (main.getRawButton(1)){
